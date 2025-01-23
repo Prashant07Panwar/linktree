@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/public/a.jpg')",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
