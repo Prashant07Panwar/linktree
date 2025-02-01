@@ -3,16 +3,14 @@ import  { NextRequest } from 'next/server'
  
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
+   const username = "username"
    const searchParams = request.nextUrl.searchParams
-   const paramvalue = searchParams.get('admin')
-   if(paramvalue){
-    const url = request.nextUrl.clone()
-    url.searchParams.set('admin',true)
-    return NextResponse.rewrite(url)     
-   }
-   return NextResponse.next()
+   const paramvalue = searchParams.get('username')
+return NextResponse.rewrite(new URL(`/profile/${username}`, request.url))
 }
-
+export const config = {
+   matcher: '/profile/:path*',
+ }
  
 // // See "Matching Paths" below to learn more
     //  if (request.nextUrl.pathname.endsWith('/discover')) {
@@ -46,3 +44,10 @@ export function middleware(request) {
     //   if (request.nextUrl.pathname.endsWith('/usernamelogin')) {
     //     return NextResponse.rewrite(new URL('/usernamelogin?admin=true', request.url))
     //   }
+
+
+    // if(paramvalue){
+   //  const url = request.nextUrl.clone()
+   //  url.searchParams.set('admin',true)
+   //  return NextResponse.rewrite(url)     
+   // }

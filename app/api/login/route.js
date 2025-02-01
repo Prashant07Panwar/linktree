@@ -3,6 +3,7 @@ import clientPromise from "@/lib/mongodb"
 import { redirect } from "next/dist/server/api-utils"
 
 export async function POST(request) {
+    console.log(request)
     const body = await request.json()
     console.log(body)
     const client = await clientPromise

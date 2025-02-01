@@ -1,18 +1,21 @@
 "use client"
-import React, { useRef } from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { useEffect } from 'react'
 
-const Navbar = () => { 
+const Navbar = () => {
+  const searchParams = useSearchParams()
+  const [admin, setadmin] = useState(false)
+  const { data: session } = useSession()
   const pathname = usePathname()
   const shownav = ["/","/generate","/templates","/Marketplace","/discover","/Pricing","/Learn"].includes(pathname)
-  const searchparams = useSearchParams()
-  const loginvar = useRef(searchparams.get('admin'))
-  // console.log(loginvar.current,"yo","1")
-  const [loginvarstate, setloginvarstate] = useState(loginvar.current)
+  useEffect(() => {
+    setadmin(searchParams.get('admin'))
+  }, [admin])
+  
   return (
     <>
      {shownav && <nav className='bg-gray-100 logo w-[90vw] z-[2] rounded-full px-5 py-2 fixed top-10 right-[5vw] flex justify-between'>
@@ -27,11 +30,10 @@ const Navbar = () => {
                 <Link href="/Learn" className='hover:bg-slate-300 hover:rounded-md p-2'><li>Learn</li></Link>
              </ul>
         </div>
-        
-            {!loginvarstate && <div className='flex gap-3'><Link href={"loginuser"} className='login bg-gray-400 p-2 rounded-lg font-semibold'>Log in</Link>
+            {(!session && !admin) && <div className='flex gap-3'><Link href={"loginuser"} className='login bg-gray-400 p-2 rounded-lg font-semibold'>Log in</Link>
             <Link href="/signup" className=' bg-gray-900 text-white rounded-full p-2 font-semibold'>Sign up free</Link></div>}
-            {loginvarstate && <div className='flex gap-3'><Link href={"loginuser"} className='login bg-gray-400 p-2 rounded-lg font-semibold'>Admin</Link>
-            <Link href="/signup" className=' bg-gray-900 text-white rounded-full p-2 font-semibold'>Sign out</Link></div>}   
+            {(session || admin) && <div className='flex gap-3'><Link href={"loginuser"} className='login bg-gray-400 p-2 rounded-lg font-semibold'>Profile</Link>
+            <button className=' bg-gray-900 text-white rounded-full p-2 font-semibold' onClick={()=>{signOut('github')}}>Sign out</button></div>}   
     </nav>}    
     </>
   )

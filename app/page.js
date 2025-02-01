@@ -7,16 +7,12 @@ import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-
+import { useSession , signIn, signOut} from "next-auth/react";
 
 export default function Home() {
   const [handlename, sethandlename] = useState("")
   const router = useRouter()
-  const searchparams = useSearchParams()
-  if(searchparams.get('admin')==true){
-    toast.success(searchparams.get('message'))
-  }
-  console.log(searchparams.get('message'),searchparams.get('admin'))
+  const {data:session} = useSession()
  const {
      register,
      handleSubmit,
@@ -44,11 +40,11 @@ export default function Home() {
         <button onClick={redirect} className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-full px-4 py-4 font-semibold shadow-md shadow-slate-950  hover:shadow-lg hover:shadow-slate-950">Claim your Bittree</button>
         </div>
 
-        <form action="" onSubmit={handleSubmit(onsubmit)} className="flex gap-2">
+       {session &&  <form action="" onSubmit={handleSubmit(onsubmit)} className="flex gap-2">
         <input {...register("handle",{required:{value:true,message:"Please enter your handle"}})} className="px-2 py-2 font-semibold focus:outline-green-800 rounded-md shadow-md shadow-slate-950  hover:shadow-lg hover:shadow-slate-950" type="text" placeholder="Enter Handle" />
         {errors.handle && <span className="text-lg text-black font-semibold">{errors.handle.message}</span>}
         <button onClick={redirect} className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-full px-4 py-4 font-semibold shadow-md shadow-slate-950  hover:shadow-lg hover:shadow-slate-950">Go to your handle</button>
-        </form>
+        </form>}
 
       </div>
         </div>
