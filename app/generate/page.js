@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 const page =() => {
 const searchparams = useSearchParams()
@@ -58,7 +59,7 @@ setdisplay(true)
   toast.error(res.message)
 }
 }
-  return (
+  return ( <Suspense>
     <div className='grid grid-cols-2 h-[150vh] bg-[#E9C0E9]'>
          <div className='col2 flex flex-col justify-start mt-[17vh] items-center'>
          <div className='flex flex-col gap-3  shadow-lg px-2 rounded-lg bg-gradient-to-r from-purple-300 to-pink-300 shadow-pink-950'>
@@ -93,6 +94,7 @@ setdisplay(true)
     <div className='col1 h-screen  flex flex-col items-start'><img className='object-contain h-full img3' src="/generate.png" alt="" /></div>
     <ToastContainer/>
     </div>
+    </Suspense>
   )
 }
 
