@@ -1,12 +1,12 @@
 "use client"
-import React, { useEffect, useRef } from 'react'
-import { useState } from 'react'
+import React, { useEffect,useState,Suspense } from 'react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn} from "next-auth/react"
+
 
 const page = () => {
   const [username, setusername] = useState("")
@@ -18,10 +18,11 @@ const page = () => {
 const router = useRouter()
 
 useEffect(() => {
-  if (session) {
+  if (session?.user) {
     router.push("/");
   }
 }, [session, router]);
+
 
   const {
     register,
@@ -30,40 +31,57 @@ useEffect(() => {
     setError,
     formState: { errors,isSubmitting },
   } = useForm()
-const onsubmit = async(data)=>{
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-  
-    const raw = JSON.stringify(data);
-    
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow"
-    };
-    
-    const r = await fetch("http://localhost:3000/api/login", requestOptions)
-    const res = await r.json()
-    if(res.success){
-      router.push("/")
+
+  const handleGithubSignIn = () => signIn("github");
+
+const onsubmit = async (data) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const raw = JSON.stringify(data);
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  try {
+    const response = await fetch("/api/login", requestOptions);
+    const res = await response.json();
+
+    if (res.success) {
+      router.push("/");
+      toast.success("Login successful!", { position: "top-center" });
+    } else {
+      toast.error(res.message, {
+        position: "top-center",
+        style: {
+          width: "25vw", 
+          height: "10vh",
+          border: "20px",
+          backgroundColor: "white",
+          filter: "opacity(.7)",
+          fontWeight: "extrabold",
+          fontSize: "20px",
+          color: "black",
+        },
+      });
     }
-    toast.error(res.message,{position:'top-center',style:{
-      width:"25vw",
-      height:"10vh",
-      border:"20px",
-      backgroundColor:"white",
-      filter:"opacity(.7)",
-      fontWeight:"extrabold",
-      fontSize:"20px",
-      color:"black"
-    }})  
-    setresultuser(res.successuser)
-    setresultpassword(res.successpassword)
-} 
+
+    setresultuser(res.successuser);
+    setresultpassword(res.successpassword);
+  } catch (error) {
+    toast.error("Something went wrong. Please try again.", {
+      position: "top-center",
+    });
+  }
+}; 
 
 
     return (
+      <Suspense fallback={<div>Loading...</div>}>
     <div className='grid grid-cols-2 min-h-screen bg-gradient-to-r from-stone-500 to-stone-300'>
     <div className='flex flex-col gap-3 w-full items-center justify-center bg-gradient-to-r from-fuchsia-100 to-fuchsia-200'>
     <form action={""} onSubmit={handleSubmit(onsubmit)} className='flex flex-col  justify-center items-center w-full' >
@@ -106,7 +124,7 @@ const onsubmit = async(data)=>{
           </svg>
           <span>Continue with Google</span>
         </button>
-        <button onClick={() => { signIn("github") }}
+        <button onClick={handleGithubSignIn}
           className="flex items-center justify-center w-2/3 px-4 py-3 text-lg gap-4 bg-slate-50 text-black border border-gray-300 rounded-lg shadow-md max-w-xs  font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
           <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 73 73" version="1.1">
@@ -135,7 +153,7 @@ const onsubmit = async(data)=>{
     <div><img className='h-[120vh] w-full object-cover' src="/login.png" alt="" /></div>
     <ToastContainer/>
     </div>
-    
+    </Suspense>
   )
 }
 
