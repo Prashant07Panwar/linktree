@@ -8,13 +8,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 
-export default function Home() {
-  return (
-    <Suspense fallback={<p>Loading...</p>}>
-      <HomePage />
-    </Suspense>
-  );
-}
+// export default function Home() {
+//   return (
+//     <Suspense fallback={<p>Loading...</p>}>
+//       <HomePage />
+//     </Suspense>
+//   );
+// }
 
 function HomePage() {
   const [handlename, setHandlename] = useState("");

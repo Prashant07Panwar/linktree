@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect,useState,Suspense } from 'react'
+import React, { useEffect,useState } from 'react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
@@ -81,7 +81,6 @@ const onsubmit = async (data) => {
 
 
     return (
-      <Suspense fallback={<div>Loading...</div>}>
     <div className='grid grid-cols-2 min-h-screen bg-gradient-to-r from-stone-500 to-stone-300'>
     <div className='flex flex-col gap-3 w-full items-center justify-center bg-gradient-to-r from-fuchsia-100 to-fuchsia-200'>
     <form action={""} onSubmit={handleSubmit(onsubmit)} className='flex flex-col  justify-center items-center w-full' >
@@ -153,7 +152,6 @@ const onsubmit = async (data) => {
     <div><img className='h-[120vh] w-full object-cover' src="/login.png" alt="" /></div>
     <ToastContainer/>
     </div>
-    </Suspense>
   )
 }
 
