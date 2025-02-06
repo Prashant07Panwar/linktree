@@ -14,7 +14,7 @@ export const config = {
  
 // // See "Matching Paths" below to learn more
     //  if (request.nextUrl.pathname.endsWith('/discover')) {
-    //     console.log("aa")
+    //     
     //     return NextResponse.redirect(new URL('/discover?admin=true', request.url))
     //   }
     //   if (request.nextUrl.pathname.endsWith('/generate')) {

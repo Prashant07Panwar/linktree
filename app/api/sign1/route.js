@@ -3,7 +3,7 @@ import clientPromise from "@/lib/mongodb"
 
 export async function POST(request) {
     const body = await request.json()
-    console.log(body.email)
+   
     const client = await clientPromise
     const db = await client.db("bittree")
     const collection = await db.collection("bittrees")
@@ -18,7 +18,7 @@ export async function POST(request) {
         return NextResponse.json({successfull:true,display1:false,display2:true})
     }
     if(body.email && body.password && body.username){
-        console.log(body)
+        
         const doc3 = await collection.findOne({username:body.username})
         if(doc3){
             return NextResponse.json({validity:true})

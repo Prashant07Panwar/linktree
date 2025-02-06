@@ -33,9 +33,9 @@ useEffect(() => {
 const onsubmit = async(data)=>{
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    // console.log(data) 
+  
     const raw = JSON.stringify(data);
-    // console.log(raw)
+    
     const requestOptions = {
       method: "POST",
       headers: myHeaders,

@@ -23,7 +23,7 @@ const {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const raw = JSON.stringify(data);
-    console.log(raw)
+    
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -32,9 +32,9 @@ const {
     };
     const r = await fetch("http://localhost:3000/api/sign1", requestOptions)
     const d = await r.json()
-    console.log(d)
+   
     setvalidusername(d.validusername)
-    console.log(d.message)
+  
   }
   return (
       <section className='grid grid-cols-2 min-h-screen'>

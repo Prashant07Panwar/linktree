@@ -52,7 +52,7 @@ const onsub1 =(data)=>{
 //         const myHeaders = new Headers();
 //         myHeaders.append("Content-Type", "application/json");
 //         const raw = JSON.stringify(data);
-//         console.log(raw)
+//         
 //         const requestOptions = {
 //           method: "POST",
 //           headers: myHeaders,
@@ -61,7 +61,7 @@ const onsub1 =(data)=>{
 //         };
 //         const r = await fetch("http://localhost:3000/api/sign", requestOptions)
 //         const d = await r.json()
-//         console.log(d)
+//        
 //         setvemail(d.vemail)
 //         setvbutton(d.vbutton)
 //         setindex(d.index)}
@@ -71,7 +71,7 @@ const onsub1 =(data)=>{
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   const raw = JSON.stringify(data);
-  console.log(raw)
+  
   const requestOptions = {
     method: "POST",
     headers: myHeaders,
@@ -80,7 +80,7 @@ const onsub1 =(data)=>{
   };
   const r = await fetch("http://localhost:3000/api/sign1", requestOptions)
   const d = await r.json()
-  console.log(d) 
+   
   setvemail(d.vemail)
   setindex(d.index)
   setuseremail("")
@@ -94,7 +94,7 @@ const onsub1 =(data)=>{
 //   const myHeaders = new Headers();
 //   myHeaders.append("Content-Type", "application/json");
 //   const raw = JSON.stringify(data);
-//   console.log(raw)
+//  
 //   const requestOptions = {
 //     method: "POST",
 //     headers: myHeaders,
@@ -103,7 +103,7 @@ const onsub1 =(data)=>{
 //   };
 //   const r = await fetch("http://localhost:3000/api/sign1", requestOptions)
 //   const d = await r.json()
-//   console.log(d)
+//  
 //   setvalidusername(d.validusername)
 // }
 
@@ -115,7 +115,7 @@ const onsubmit3 =async(data)=>{
     "password":userpassword,
     "username":data.username
   });
-  console.log(raw)
+
   const requestOptions = {
     method: "POST",
     headers: myHeaders,
@@ -124,7 +124,7 @@ const onsubmit3 =async(data)=>{
   };
   const r = await fetch("http://localhost:3000/api/sign1", requestOptions)
   const d = await r.json()
-  console.log(d)
+
   if(d.saving){
     toast("Please wait a moment...signing you in",{style:{
       width:"25vw",
@@ -150,9 +150,9 @@ const onsubmit3 =async(data)=>{
 // const onsubmit = async(data)=>{
 //     const myHeaders = new Headers();
 //     myHeaders.append("Content-Type", "application/json");
-//     console.log(data) 
+//    
 //     const raw = JSON.stringify(data);
-//     console.log(raw)
+//     
 //     const requestOptions = {
 //       method: "POST",
 //       headers: myHeaders,
@@ -162,7 +162,7 @@ const onsubmit3 =async(data)=>{
     
 //     const r = await fetch("http://localhost:3000/api/login", requestOptions)
 //     const res = await r.json()
-//     console.log(res)
+//    
 //     if(res.success){
 //         router.push(`/?admin=${true}`)
 //     }   

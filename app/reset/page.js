@@ -37,7 +37,7 @@ const page = () => {
       };
       let r = await fetch("/api/reset", requestOptions);
       let d = await r.json()
-      console.log(d)
+      
       setresultemail(d.successemail)
       setdisplayform2(d.displayform2)
       setdisplayform1(d.displayform1)
@@ -58,7 +58,7 @@ const page = () => {
     };
     let r = await fetch("/api/reset", requestOptions);
     let d = await r.json()
-    console.log(d)
+    
     if(d.success){
       setdisplay3(true)
       setdisplayform2(false)
