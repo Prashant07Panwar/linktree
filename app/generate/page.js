@@ -13,7 +13,7 @@ const GeneratePage = () => {
   const [desc, setdesc] = useState("");
   const [display, setdisplay] = useState(false);
   const [handleredirect, sethandleredirect] = useState("");
-
+  const searchParams = useSearchParams();
   const addlink = () => {
     setLinks([...Links, { link: "", linktext: "" }]);
   };
@@ -57,6 +57,12 @@ const GeneratePage = () => {
       toast.error(res.message);
     }
   };
+  useEffect(() => {
+    if (searchParams.get("handle")) {
+      sethandle(searchParams.get("handle"));
+    }
+  }, [handle])
+  
 
   return (
     <div className="grid grid-cols-2 h-[150vh] bg-[#E9C0E9]">
