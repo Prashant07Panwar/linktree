@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
 
-const page = () => {
+const Page = () => {
 
   const [email, setemail] = useState("Enter your email")
   const [password, setpassword] = useState("")
@@ -98,4 +98,4 @@ const page = () => {
         </div>
        )
     }
-export default page
+export default Page

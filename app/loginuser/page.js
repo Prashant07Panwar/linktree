@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSession, signIn} from "next-auth/react"
 
 
-const page = () => {
+const Page = () => {
   const [username, setusername] = useState("")
   const [password, setpassword] = useState("")
   const [resultuser, setresultuser] = useState(false)
@@ -155,4 +155,4 @@ const onsubmit = async (data) => {
   )
 }
 
-export default page
+export default Page

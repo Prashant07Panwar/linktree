@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // import toasting from 'react-hot-toast';
 
 
-const page = () => {
+const Page = () => {
   const [useremail, setuseremail] = useState("")
   const [vemail, setvemail] = useState(false)
   const [index, setindex] = useState(0)
@@ -220,4 +220,4 @@ const onsubmit3 =async(data)=>{
   )
 }
 
-export default page
+export default Page

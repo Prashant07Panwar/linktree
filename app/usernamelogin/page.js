@@ -2,7 +2,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-const page = () => {
+const Page = () => {
 
 const [validusername, setvalidusername] = useState(false)
   const [username, setusername] = useState("")
@@ -10,9 +10,7 @@ const [validusername, setvalidusername] = useState(false)
 const {
     register,
     handleSubmit,
-    watch,
-    setError,
-    formState: { errors,isSubmitting },
+    formState: { errors },
   } = useForm()
 
   const onsub2 =(data)=>{
@@ -58,4 +56,4 @@ const {
   )
 }
 
-export default page
+export default Page

@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { useParams } from 'next/navigation'
-const page = () => {
+const Page = () => {
    const params = useParams()
   return (
     <div className='flex'>
@@ -43,4 +43,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

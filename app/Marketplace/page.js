@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-const page = () => {
+const Page = () => {
   return (
    <>
     <section className="bg-[#502274] min-h-screen grid grid-cols-2">
@@ -80,4 +80,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

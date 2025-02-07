@@ -3,7 +3,7 @@ import Link from 'next/link';
 import clientPromise from '@/lib/mongodb';
 import { notFound } from 'next/navigation';
 
-const handle = async ({ params }) => {
+const Handle = async ({ params }) => {
   const handle = (await params).handle;
   const client = await clientPromise;
   const db = client.db("bittree");
@@ -76,4 +76,4 @@ const handle = async ({ params }) => {
   );
 };
 
-export default handle;
+export default Handle;

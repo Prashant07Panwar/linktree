@@ -1,5 +1,5 @@
 "use client";
-import { useState, Suspense } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -135,3 +135,5 @@ function HomePage() {
     </main>
   );
 }
+
+export default HomePage;

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-const page = () => {
+const Page = () => {
   return (
     <div className=' bg-gradient-to-r from-slate-200 to-slate-700'>
      <div className='h-[60vh] flex flex-col justify-end items-center px-2 '>
@@ -50,4 +50,4 @@ const page = () => {
 )     
 }
 
-export default page
+export default Page

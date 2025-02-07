@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
@@ -12,7 +12,6 @@ const DiscoverPage = () => {
   };
 
   return (
-    <Suspense fallback={<p>Loading...</p>}>
       <div>
         <section className="bg-[#7A0016] min-h-screen grid grid-cols-2">
           {/* Left Side */}
@@ -62,7 +61,6 @@ const DiscoverPage = () => {
           </div>
         </section>
       </div>
-    </Suspense>
   );
 };
 

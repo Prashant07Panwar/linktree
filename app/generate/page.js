@@ -1,22 +1,10 @@
 "use client";
 
-import React, { Suspense, useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-
-const SearchParamsHandler = ({ sethandle, sethandleredirect }) => {
-  const searchParams = useSearchParams();
-  const handleValue = searchParams.get("handle") || "";
-
-  useEffect(() => {
-    sethandle(handleValue);
-    sethandleredirect(handleValue);
-  }, [handleValue, sethandle, sethandleredirect]);
-
-  return null; 
-};
 
 const GeneratePage = () => {
   const [Links, setLinks] = useState([{ linktext: "", link: "" }]);
@@ -54,11 +42,12 @@ const GeneratePage = () => {
       redirect: "follow",
     };
 
-    let r = await fetch("http://localhost:3000/api/add", requestOptions);
+    let r = await fetch("/api/add", requestOptions);
     let res = await r.json();
 
     if (res.success) {
       toast.success(res.message);
+      sethandleredirect(handle);
       setLinks([{ linktext: "", link: "" }]);
       setPiclink("");
       sethandle("");
@@ -71,10 +60,6 @@ const GeneratePage = () => {
 
   return (
     <div className="grid grid-cols-2 h-[150vh] bg-[#E9C0E9]">
-      <Suspense fallback={null}>
-        <SearchParamsHandler sethandle={sethandle} sethandleredirect={sethandleredirect} />
-      </Suspense>
-
       <div className="col2 flex flex-col justify-start mt-[17vh] items-center">
         <div className="flex flex-col gap-3 shadow-lg px-2 rounded-lg bg-gradient-to-r from-purple-300 to-pink-300 shadow-pink-950">
           <h1 className="font-bold text-4xl">Create your Bittree</h1>
@@ -135,7 +120,7 @@ const GeneratePage = () => {
                 placeholder="Enter description"
               />
               <button
-                disabled={!handle || !Links[0].linktext || !desc}
+                disabled={!handle || !Links[0].linktext || !desc || !Links[0].link}
                 onClick={() => createbitlink(Links, handle, Piclink, desc)}
                 className="text-white disabled:bg-slate-500 w-fit my-5 font-bold rounded-3xl bg-slate-900 mx-2 p-5 py-2"
               >
