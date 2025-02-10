@@ -1,16 +1,33 @@
-import { NextResponse } from 'next/server'
-import  { NextRequest } from 'next/server'
- 
-// This function can be marked `async` if using `await` inside
+import { NextResponse } from "next/server";
+
 export function middleware(request) {
-   const username = "username"
-   const searchParams = request.nextUrl.searchParams
-   const paramvalue = searchParams.get('username')
-return NextResponse.rewrite(new URL(`/profile/${username}`, request.url))
+    const response = NextResponse.next();
+    response.headers.set("Access-Control-Allow-Origin", "*");
+    response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+    return response;
 }
+
 export const config = {
-   matcher: '/profile/:path*',
- }
+    matcher: "/api/:path*",
+};
+
+
+
+
+// import { NextResponse } from 'next/server'
+// import  { NextRequest } from 'next/server'
+ 
+// // This function can be marked `async` if using `await` inside
+// export function middleware(request) {
+//    const username = "username"
+//    const searchParams = request.nextUrl.searchParams
+//    const paramvalue = searchParams.get('username')
+// return NextResponse.rewrite(new URL(`/profile/${username}`, request.url))
+// }
+// export const config = {
+//    matcher: '/profile/:path*',
+//  }
  
 // // See "Matching Paths" below to learn more
     //  if (request.nextUrl.pathname.endsWith('/discover')) {
