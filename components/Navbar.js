@@ -2,8 +2,7 @@
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useSession, signIn, signOut } from "next-auth/react"
-import { useRouter } from 'next/navigation'
+import { useSession, signOut } from "next-auth/react"
 import { useState } from 'react'
 
 const Navbar = () => {

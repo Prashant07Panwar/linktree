@@ -9,11 +9,11 @@ import Link from "next/link";
 const GeneratePage = () => {
   const [Links, setLinks] = useState([{ linktext: "", link: "" }]);
   const [Piclink, setPiclink] = useState("");
-  const [handle, sethandle] = useState("");
+  const searchParams = useSearchParams();
+  const [handle, sethandle] = useState(searchParams.get("handle") || "");
   const [desc, setdesc] = useState("");
   const [display, setdisplay] = useState(false);
   const [handleredirect, sethandleredirect] = useState("");
-  const searchParams = useSearchParams();
   const addlink = () => {
     setLinks([...Links, { link: "", linktext: "" }]);
   };
@@ -57,11 +57,11 @@ const GeneratePage = () => {
       toast.error(res.message);
     }
   };
-  useEffect(() => {
-    if (searchParams.get("handle")) {
-      sethandle(searchParams.get("handle"));
-    }
-  }, [handle])
+  // useEffect(() => {
+  //   if (searchParams.get("handle")) {
+  //     sethandle(searchParams.get("handle"));
+  //   }
+  // },)
   
 
   return (
