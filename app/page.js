@@ -124,7 +124,7 @@ function HomePage() {
         <div className="flex flex-col mx-8 justify-center items-start mr-[10vw]">
           <p className="text-7xl font-extrabold text-[#502274]">Good company</p>
           <p className="text-[#502274] pt-8 font-semibold text-lg">Sign up for the same link-in-bio tool that 50M+ of your favorite creators, musicians, influencers, and brands use to keep growing.</p>
-          <Link href="/signup" className="bg-[#502274] rounded-full text-lg py-2 px-16 my-12 text-white font-semibold">
+          <Link href="/loginuser" className="bg-[#502274] rounded-full text-lg py-2 px-16 my-12 text-white font-semibold">
             Sign up for free
           </Link>
         </div>

@@ -12,7 +12,7 @@ const Page = () => {
          <div className="my-4">
          <p className="text-xl text-[#e9c0e9]">Join the 50M+ creators, musicians, influencers and brands using Linktree to share content and grow audiences with one simple link.</p>
          </div>
-         <Link href="/signup" className='bg-[#d2e823] rounded-full text-lg py-2 px-16'>Sign up for free</Link>
+         <Link href="/loginuser" className='bg-[#d2e823] rounded-full text-lg py-2 px-16'>Sign up for free</Link>
         </div>
         <div className="flex justify-center flex-col mr-[10vw] mt-16"><img src="\template.webp" className="" alt="huhihhuiuh" />
         </div>
@@ -21,7 +21,7 @@ const Page = () => {
         <p className='pt-24 pb-8 text-7xl font-extrabold text-black'>Get more with Linktree</p>
         <p className='text-xl font-semibold text-black'>Help your followers discover, enjoy and support everything you have to offer when you add</p>
         <p className='text-xl font-semibold text-black'>Linktree’s ‘Link In Bio’ to your Instagram today.</p>
-        <Link href="/signup" className='bg-[#e9c0e9] rounded-full font-semibold text-lg py-2 px-16 my-8'>Sign up for free</Link>
+        <Link href="/loginuser" className='bg-[#e9c0e9] rounded-full font-semibold text-lg py-2 px-16 my-8'>Sign up for free</Link>
         <div className='flex gap-6 my-2'>
             <div className='flex flex-col px-2 items-start justify-center rounded-3xl w-[20vw] bg-[#e9c0e9]'>
                 <img src="https://cdn.prod.website-files.com/666255f7f2126f4e8cec6f8f/66996301885721c14a1dc6d3_feature-7.avif-p-500.png" alt="" className='w-full'/>
@@ -71,7 +71,7 @@ const Page = () => {
             <p className='font-extrabold text-6xl text-black'>More data, more growth</p>
             <p className='font-semibold text-black pt-4 text-lg'>Track your clicks, measure click-through rates and analyze conversions to</p>
             <p className='font-semibold text-lg text-black'>make data-driven decisions that increase engagement and sales</p>
-            <Link href="/signup" className='bg-[#e9c0e9] rounded-full text-lg py-2 px-16 my-12 font-semibold'>Sign up for free</Link> 
+            <Link href="/loginuser" className='bg-[#e9c0e9] rounded-full text-lg py-2 px-16 my-12 font-semibold'>Sign up for free</Link> 
         </div>
         </div>
       </section>
