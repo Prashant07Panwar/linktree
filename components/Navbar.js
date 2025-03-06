@@ -12,7 +12,7 @@ const Navbar = () => {
   const pathname = usePathname()
   const shownav = ["/","/generate","/templates","/Marketplace","/discover","/Pricing","/Learn"].includes(pathname)
   useEffect(() => {
-    setadmin(searchParams.get('admin'))
+    setadmin(searchParams.get('login'))
   }, [admin])
   
   return (

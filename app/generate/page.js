@@ -57,12 +57,6 @@ const GeneratePage = () => {
       toast.error(res.message);
     }
   };
-  // useEffect(() => {
-  //   if (searchParams.get("handle")) {
-  //     sethandle(searchParams.get("handle"));
-  //   }
-  // },)
-  
 
   return (
     <div className="grid grid-cols-2 h-[150vh] bg-[#E9C0E9]">
