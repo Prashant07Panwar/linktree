@@ -11,7 +11,6 @@ import { useSession, signIn} from "next-auth/react"
 const Page = () => {
   const [validusername, setvalidusername] = useState(false)
   const [validpassword, setvalidpassword] = useState(false)
-  const [loginsuccess, setloginsuccess] = useState()
   const { data: session } = useSession()
 const router = useRouter()
 
@@ -198,8 +197,6 @@ const onsubmit = async (data) => {
 
 
     </div>
-    {/* <div className='flex mt-6 justify-center items-center gap-[2px]'><Link href="/reset" className='underline decoration-[#8129D9] text-[#8129D9] text-lg'>forgot password?</Link><span className='relative bottom-[10px] font-bold text-4xl text-black'>.</span><Link href="/reset" className='underline decoration-purple-500 text-[#8129D9] text-lg'>Forgot username?</Link></div>
-    <div className='flex justify-center gap-1 text-[#676b5f]'><span>Don't have an account?</span><Link href={"/signup"} className='underline decoration-[#8129D9] text-purple'>Sign up.</Link></div> */}
     </div>
     <div><img className='h-[120vh] w-full object-cover' src="/login.png" alt="" /></div>
     <ToastContainer/>
